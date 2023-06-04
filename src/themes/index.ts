@@ -1,0 +1,5 @@
+export { theme as xonokai } from './xonokai.js'
+export { theme as debug } from './debug.js'
+export { theme as moria } from './moria.js'
+export { theme as github } from './github.js'
+export { theme as prismDark } from './prism-dark.js'
