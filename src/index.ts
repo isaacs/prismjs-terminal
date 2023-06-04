@@ -1,5 +1,3 @@
-// TODO: style '' or '.' should be just the default wrapper style
-// TODO: pad lines out to provide background color for whole block
 // TODO: start stack with [`language-${lang}`]
 export type StyleFn = (s: string) => string
 export type Styles = StyleFn | StyleFn[]
