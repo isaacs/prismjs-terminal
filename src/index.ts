@@ -34,7 +34,7 @@ export type Styles = StyleFn | StyleFn[]
  * Aliases are also not supported, styles have to be applied to the
  * actual parsed class names PrismJS provides.
  */
-export type Theme = { [k: string]: Styles } | Map<string, Styles>
+export type Theme = Record<string, Styles> | Map<string, Styles>
 
 type CompiledRule = [stack: string[], styles: StyleFn[]][]
 
