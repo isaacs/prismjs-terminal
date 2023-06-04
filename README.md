@@ -97,3 +97,17 @@ examples.
 - `highlightFileSync(filename: string, opts?: PrismJSTerminalOpts): string`
 
   Synchronous `highlightFile`.
+
+- Themes:
+
+  More are welcome! If you have a PrismJS theme you like, do
+  send a PR. Of course not everything translates, but it's quite
+  straightforward to take a PrismJS CSS file and turn all the
+  `color: #...` lines into `chalk.hex('#...')` calls.
+
+  - `debug` This just dumps the code wrapped in `<tag>...</tag>`
+    to see what the token names are.
+  - `github` Port of GHColors prismjs theme
+  - `moria` Inspired by Vim Moria color scheme
+  - `prismDark` Port of the `prism-dark` PrismJS theme
+  - `xonokai` Port of the `xonokai` PrismJS theme
