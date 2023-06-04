@@ -7,7 +7,7 @@ import type { Theme } from '../index.js'
 export const theme: Theme = {
   // default style
   _: chalk.hex('#76d9e6').bgHex('#2a2a2a'),
-  namespace: chalk.dim,
+  'namespace, lineNumber': chalk.dim,
   'comment, prolog, doctype, cdata': chalk.hex('#6f705e'),
   'operator, boolean, number': chalk.hex('#a77afe'),
   'attr-name, string, entity, url, language-css string, style string, tag attr-value':

@@ -6,6 +6,7 @@ import type { Theme } from '../index.js'
 
 export const theme: Theme = {
   _: chalk.hex('#393A34').bgHex('#fff'),
+  lineNumber: chalk.dim,
   'comment, prolog, doctype, cdata': chalk.hex('#999988').italic,
   namespace: chalk.dim,
   'string, attr-value': chalk.hex('#e3116c'),

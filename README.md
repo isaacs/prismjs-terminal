@@ -26,6 +26,9 @@ The `_` style rule applies to the block as a whole, and is used
 as the default style. This is where you'd usually port a PrismJS
 theme's `code[class*="language-"]` css rule.
 
+The `lineNumber` style rule will apply to line numbers, if they
+are used.
+
 The semantics are similar to CSS, where a nested property will be
 applied to nodes within that nesting stack with a higher
 priority the more tags that match, and later rules taking
@@ -91,6 +94,8 @@ examples.
     screen. Defaults to `process.stdout.columns` or `80`.
   - `padding` How many spaces to horizontally pad the code
     block. Defaults to `1`.
+  - `lineNumbers` Whether or not to prepend a line number to each
+    line. Defaults to `false`.
 
 - `highlight(code: string, opts?: PrismJSTerminalOpts): string`
 

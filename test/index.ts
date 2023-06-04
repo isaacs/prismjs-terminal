@@ -27,10 +27,10 @@ for (const [f, code] of contents) {
       keyof typeof themes,
       Theme
     ][]) {
-      const c = highlight(code, { theme: name })
+      const c = highlight(code, { theme: name, lineNumbers: true })
       t.matchSnapshot(c, name)
       t.equal(
-        highlight(code, { theme }),
+        highlight(code, { theme, lineNumbers: true }),
         c,
         'same when using theme object'
       )

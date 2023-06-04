@@ -11,6 +11,7 @@ import { Theme } from '../index.js'
 
 export const theme: Theme = {
   _: chalk.ansi256(252).bgAnsi256(234),
+  lineNumber: chalk.hex('#8fa5d1'),
   punctuation: chalk.hex('#93CDFF'),
   'prolog, doctype, cdata': chalk.dim.bold,
   'interpolation rest': chalk.ansi256(252).bgAnsi256(234),

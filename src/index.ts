@@ -82,7 +82,13 @@ export interface PrismJSTerminalOpts {
   minWidth?: number
   maxWidth?: number
   padding?: number
+  lineNumbers?: boolean
 }
+
+/* c8 ignore start */
+const trimTrailingCR = (c: string) =>
+  c.endsWith('\n') ? c.substring(0, c.length - 1) : c
+/* c8 ignore stop */
 
 const blockStyle = (
   code: string,
@@ -91,9 +97,10 @@ const blockStyle = (
     minWidth = 0,
     maxWidth = process.stdout.columns || 80,
     padding = 1,
+    lineNumbers = false,
   }: PrismJSTerminalOpts
 ): string => {
-  const lines = code.replace(/\n$/m, '').split('\n')
+  const lines = trimTrailingCR(code).split('\n')
   const lens: number[] = []
   let max = minWidth
   for (const l of lines) {
@@ -101,11 +108,21 @@ const blockStyle = (
     lens.push(len)
     if (len < maxWidth && len > max) max = len
   }
+  const npad = lineNumbers ? String(lines.length).length : 0
   for (let i = 0; i < lens.length; i++) {
     const len = lens[i]
     const pad = max - len + padding
     const r = pad > 0 ? ' '.repeat(pad) : ''
-    const l = ' '.repeat(padding)
+    const l =
+      ' '.repeat(padding) +
+      (lineNumbers
+        ? applyStyles(
+            String(i + 1).padStart(npad) + ' ',
+            'lineNumber',
+            [],
+            c
+          )
+        : '')
     lines[i] = l + lines[i] + r
   }
   code = lines.join('\n') + '\n'
@@ -120,6 +137,7 @@ export const highlight = (
     minWidth,
     maxWidth,
     padding,
+    lineNumbers,
   }: PrismJSTerminalOpts = {}
 ): string => {
   const t = typeof theme === 'string' ? themes[theme] : theme
@@ -130,7 +148,7 @@ export const highlight = (
   return blockStyle(
     stringify(Prism.tokenize(code, Prism.languages[language]), c),
     c,
-    { minWidth, maxWidth, padding }
+    { minWidth, maxWidth, padding, lineNumbers }
   )
 }
 
