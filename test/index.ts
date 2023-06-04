@@ -97,10 +97,14 @@ t.test('ts file', async t => {
 })
 
 t.test('unknown extensions', t => {
-  const noext = resolve(fixturesDir, 'no-extension-file')
+  const dir = t.testdir({
+    'no-extension-file': 'hello',
+    'no-extension-dot.': 'world',
+  })
+  const noext = resolve(dir, 'no-extension-file')
   t.rejects(highlightFile(noext))
   t.throws(() => highlightFileSync(noext))
-  const dotext = resolve(fixturesDir, 'no-extension-dot.')
+  const dotext = resolve(dir, 'no-extension-dot.')
   t.rejects(highlightFile(dotext))
   t.throws(() => highlightFileSync(dotext))
   t.end()

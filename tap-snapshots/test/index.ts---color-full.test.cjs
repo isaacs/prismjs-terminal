@@ -3341,66 +3341,6 @@ exports[`test/index.ts --color=full TAP js file > sync 1`] = `
 [38;5;252m[48;5;234m[49m[39m
 `
 
-exports[`test/index.ts --color=full TAP no-extension-dot. > debug 1`] = `
-[0m 1 <keyword>this</keyword> file<string>'s type cannot be determined from its extension, because it'</string>s <builtin>unknown</builtin>[0m
-[0m[0m
-`
-
-exports[`test/index.ts --color=full TAP no-extension-dot. > github 1`] = `
-[38;2;57;58;52m[48;2;255;255;255m [2m1 [22m[38;2;0;164;219mthis[39m[38;2;57;58;52m file[38;2;227;17;108m's type cannot be determined from its extension, because it'[39m[38;2;57;58;52ms unknown[49m[39m
-[38;2;57;58;52m[48;2;255;255;255m[49m[39m
-`
-
-exports[`test/index.ts --color=full TAP no-extension-dot. > moria 1`] = `
-[38;5;252m[48;5;234m [38;2;143;165;209m1 [39m[38;5;252m[38;2;121;192;255mthis[39m[38;5;252m file[38;5;113m[48;5;234m's type cannot be determined from its extension, because it'[49m[48;5;234m[39m[38;5;252ms [38;2;246;124;79munknown[39m[38;5;252m[49m[39m
-[38;5;252m[48;5;234m[49m[39m
-`
-
-exports[`test/index.ts --color=full TAP no-extension-dot. > plain 1`] = `
- 1 this file's type cannot be determined from its extension, because it's unknown
-
-`
-
-exports[`test/index.ts --color=full TAP no-extension-dot. > prismDark 1`] = `
-[37m[48;2;35;30;25m [2m1 [22m[38;2;209;147;158mthis[39m[37m file[38;2;188;224;81m's type cannot be determined from its extension, because it'[39m[37ms [38;2;188;224;81munknown[39m[37m[49m[39m
-[37m[48;2;35;30;25m[49m[39m
-`
-
-exports[`test/index.ts --color=full TAP no-extension-dot. > xonokai 1`] = `
-[38;2;118;217;230m[48;2;42;42;42m [2m1 [22m[38;2;239;59;125mthis[39m[38;2;118;217;230m file[38;2;230;208;108m's type cannot be determined from its extension, because it'[39m[38;2;118;217;230ms unknown[49m[39m
-[38;2;118;217;230m[48;2;42;42;42m[49m[39m
-`
-
-exports[`test/index.ts --color=full TAP no-extension-file > debug 1`] = `
-[0m 1 <keyword>this</keyword> file's <keyword>type</keyword> <class-name>cannot</class-name> be determined from its extension<punctuation>,</punctuation> since it has none[0m
-[0m[0m
-`
-
-exports[`test/index.ts --color=full TAP no-extension-file > github 1`] = `
-[38;2;57;58;52m[48;2;255;255;255m [2m1 [22m[38;2;0;164;219mthis[39m[38;2;57;58;52m file's [38;2;0;164;219mtype[39m[38;2;57;58;52m cannot be determined from its extension[38;2;57;58;52m,[39m[38;2;57;58;52m since it has none [49m[39m
-[38;2;57;58;52m[48;2;255;255;255m[49m[39m
-`
-
-exports[`test/index.ts --color=full TAP no-extension-file > moria 1`] = `
-[38;5;252m[48;5;234m [38;2;143;165;209m1 [39m[38;5;252m[38;2;121;192;255mthis[39m[38;5;252m file's [38;2;121;192;255mtype[39m[38;5;252m cannot be determined from its extension[38;2;147;205;255m,[39m[38;5;252m since it has none [49m[39m
-[38;5;252m[48;5;234m[49m[39m
-`
-
-exports[`test/index.ts --color=full TAP no-extension-file > plain 1`] = `
- 1 this file's type cannot be determined from its extension, since it has none 
-
-`
-
-exports[`test/index.ts --color=full TAP no-extension-file > prismDark 1`] = `
-[37m[48;2;35;30;25m [2m1 [22m[38;2;209;147;158mthis[39m[37m file's [38;2;209;147;158mtype[39m[37m cannot be determined from its extension[2m,[22m since it has none [49m[39m
-[37m[48;2;35;30;25m[49m[39m
-`
-
-exports[`test/index.ts --color=full TAP no-extension-file > xonokai 1`] = `
-[38;2;118;217;230m[48;2;42;42;42m [2m1 [22m[38;2;239;59;125mthis[39m[38;2;118;217;230m file's [38;2;239;59;125mtype[39m[38;2;118;217;230m cannot be determined from its extension[38;2;190;190;197m,[39m[38;2;118;217;230m since it has none [49m[39m
-[38;2;118;217;230m[48;2;42;42;42m[49m[39m
-`
-
 exports[`test/index.ts --color=full TAP ts file > async 1`] = `
 [38;5;252m[48;5;234m [38;2;215;95;255m[48;5;234m[3m// TODO: start stack with [\`language-\${lang}\`][23m[49m[48;5;234m[39m[38;5;252m                            [49m[39m
 [38;5;252m[48;5;234m [38;2;121;192;255mexport[39m[38;5;252m [38;2;121;192;255mtype[39m[38;5;252m StyleFn = [38;2;147;205;255m([39m[38;5;252ms: [38;2;246;124;79mstring[39m[38;5;252m[38;2;147;205;255m)[39m[38;5;252m => [38;2;246;124;79mstring[39m[38;5;252m                               [49m[39m
