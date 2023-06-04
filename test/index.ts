@@ -34,6 +34,11 @@ for (const [f, code] of contents) {
         c,
         'same when using theme object'
       )
+      t.equal(
+        highlight(code.trimEnd(), { theme: name, lineNumbers: true }),
+        c,
+        'same when code lacks trailing CR'
+      )
     }
     t.end()
   })
@@ -101,7 +106,7 @@ t.test('unknown extensions', t => {
   t.end()
 })
 
-t.test('invalid theme', t =>  {
+t.test('invalid theme', t => {
   //@ts-expect-error
   t.throws(() => highlight('some code', { theme: 'no theme here' }))
   t.end()

@@ -80,7 +80,8 @@ examples.
 - interface `PrismJSTerminalOpts`
 
   - `theme` The theme to use. Either a Theme object, or a
-    string identifying one of the built-in themes.
+    string identifying one of the built-in themes. Defaults to
+    `'moria'`.
   - `language` The language of the supplied code to highlight.
     Defaults to `tsx` if no filename is provided, or else
     tries to infer the language from the filename. You must

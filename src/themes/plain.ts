@@ -1,4 +1,6 @@
-// if you just don't want it styled, I guess?
-// not sure why you're using this module then, but here for completeness
+/**
+ * No styling, just the code as plain text.
+ * Will add line numbers and padding if requested, of course.
+ */
 import { Theme } from '../index.js'
 export const theme: Theme = { _: s => s }

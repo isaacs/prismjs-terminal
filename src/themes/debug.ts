@@ -1,10 +1,9 @@
 import { Theme } from '../index.js'
 
 /**
- * This theme just shows which token names are in use
- * The list of tokens is everything defined in the
- * tsx PrismJS language grammar, since that is a superset
- * of JavaScript, TS, JSX, and HTML.
+ * This theme just shows which token names are in use The list of tokens is
+ * everything defined in the tsx PrismJS language grammar, since that is a
+ * superset of JavaScript, TS, JSX, and HTML.
  */
 export const theme: Theme = new Map(
   `

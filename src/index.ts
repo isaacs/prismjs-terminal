@@ -1,9 +1,50 @@
 // TODO: start stack with [`language-${lang}`]
+
+/**
+ * A function that applies styles, typically one of the chalk builder functions
+ */
 export type StyleFn = (s: string) => string
+
+/**
+ * Either one {@link StyleFn} or several
+ */
 export type Styles = StyleFn | StyleFn[]
+
+/**
+ * Theme objects can be either a Map or object where the keys are the selectors
+ * and the values are either a styling function or an array of styling
+ * functions to be applied in order.
+ *
+ * The `_` style rule applies to the block as a whole, and is used
+ * as the default style. This is where you'd usually port a PrismJS
+ * theme's `code[class*="language-"]` css rule.
+ *
+ * The `lineNumber` style rule will apply to line numbers, if they
+ * are used.
+ *
+ * The semantics are similar to CSS, where a nested property will be
+ * applied to nodes within that nesting stack with a higher
+ * priority the more tags that match, and later rules taking
+ * precedence over earlier ones. It's _not_ a full CSS selector
+ * syntax though, so things like `.token.italic.bold` aren't
+ * supported. Just individual token class names, possibly nested.
+ * Also, chalk is not CSS, and a terminal is not a browser, so
+ * there are some differences and limitations of course.
+ *
+ * Aliases are also not supported, styles have to be applied to the
+ * actual parsed class names PrismJS provides.
+ */
 export type Theme = { [k: string]: Styles } | Map<string, Styles>
-export type CompiledRule = [stack: string[], styles: StyleFn[]][]
-export type CompiledTheme = Map<string, CompiledRule>
+
+type CompiledRule = [stack: string[], styles: StyleFn[]][]
+
+/**
+ * A theme that has been compiled for use in highlighting functions
+ * Optimized for faster lookup of tokens, with rules sorted based on
+ * priority.
+ */
+type CompiledTheme = Map<string, CompiledRule>
+
 import chalk from 'chalk'
 import { readFileSync } from 'fs'
 import { readFile } from 'fs/promises'
@@ -74,21 +115,63 @@ const applyStyles = (
   return content
 }
 
-export type Tokens = string | Prism.Token | (string | Prism.Token)[]
+type Tokens = string | Prism.Token | (string | Prism.Token)[]
 
+/**
+ * Options for the highlighting functions
+ */
 export interface PrismJSTerminalOpts {
+  /**
+   * The theme to use. Either a {@link Theme} object, or a
+   * string identifying one of the built-in themes.
+   *
+   * @default 'moria'
+   */
   theme?: keyof typeof themes | Theme
+
+  /**
+   * The language of the supplied code to highlight. Defaults to `tsx` if no
+   * filename is provided, or else tries to infer the language from the
+   * filename. You must have previously called `loadLanguages([...])` from
+   * `PrismJS` in order to highlight a given language, if you want something
+   * that is not automatically included when `tsx` and `typescript` are
+   * included.
+   *
+   * @default 'tsx'
+   */
   language?: string
+
+  /**
+   * The minimum width to make the block on the screen.
+   *
+   * @default 0
+   */
   minWidth?: number
+
+  /**
+   * The maximum width to make the block on the screen.
+   *
+   * @default `process.stdout.columns` or `80`.
+   */
   maxWidth?: number
+
+  /**
+   * How many spaces to horizontally pad the code block.
+   *
+   * @default 1
+   */
   padding?: number
+
+  /**
+   * Whether or not to prepend a line number to each line.
+   *
+   * @default false
+   */
   lineNumbers?: boolean
 }
 
-/* c8 ignore start */
 const trimTrailingCR = (c: string) =>
   c.endsWith('\n') ? c.substring(0, c.length - 1) : c
-/* c8 ignore stop */
 
 const blockStyle = (
   code: string,
@@ -103,12 +186,13 @@ const blockStyle = (
   const lines = trimTrailingCR(code).split('\n')
   const lens: number[] = []
   let max = minWidth
+  const npad = lineNumbers ? String(lines.length).length : 0
+  const tpad = npad + padding * 2
   for (const l of lines) {
     const len = stringLength(l)
     lens.push(len)
-    if (len < maxWidth && len > max) max = len
+    if (len < maxWidth - tpad && len > max) max = len
   }
-  const npad = lineNumbers ? String(lines.length).length : 0
   for (let i = 0; i < lens.length; i++) {
     const len = lens[i]
     const pad = max - len + padding
@@ -129,11 +213,15 @@ const blockStyle = (
   return applyStyles(code, '_', [], c)
 }
 
+/**
+ * Highlight the string of code provided, returning the string of highlighted
+ * code.
+ */
 export const highlight = (
   code: string,
   {
     language = 'tsx',
-    theme = 'xonokai',
+    theme = 'moria',
     minWidth,
     maxWidth,
     padding,
@@ -170,6 +258,10 @@ const detectLanguage = (filename: string): string => {
   }
 }
 
+/**
+ * Read the filename provided, and highlight its code. If a language is not
+ * provided in the opts, it will attempt to infer from the filename.
+ */
 export const highlightFile = async (
   filename: string,
   opts: PrismJSTerminalOpts = {}
@@ -178,6 +270,12 @@ export const highlightFile = async (
   return highlight(await readFile(filename, 'utf8'), opts)
 }
 
+/**
+ * Read the filename provided, and highlight its code. If a language is not
+ * provided in the opts, it will attempt to infer from the filename.
+ *
+ * Synchronous {@link highlightFile}
+ */
 export const highlightFileSync = (
   filename: string,
   opts: PrismJSTerminalOpts = {}

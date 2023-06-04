@@ -1,9 +1,10 @@
-// Port of GHColors PrismJS theme
-// https://github.com/PrismJS/prism-themes/blob/057c2a4430d78268528e65ba92860703c9cb56d8/themes/prism-ghcolors.css
-
 import chalk from 'chalk'
 import type { Theme } from '../index.js'
 
+/**
+ * Port of GHColors prismjs theme.
+ * <https://github.com/PrismJS/prism-themes/blob/057c2a4430d78268528e65ba92860703c9cb56d8/themes/prism-ghcolors.css>
+ */
 export const theme: Theme = {
   _: chalk.hex('#393A34').bgHex('#fff'),
   lineNumber: chalk.dim,

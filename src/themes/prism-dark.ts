@@ -1,10 +1,13 @@
-// Port of prism-dark theme
-// https://github.com/PrismJS/prism/blob/867804573562ef0ac5acf470420b97e43488ccde/themes/prism-dark.css
-// Slightly tweaked a few colors so that they are a bit more readable on
-// a terminal, some terminals have rendering issues when contrast is too low.
 import chalk from 'chalk'
 import type { Theme } from '../index.js'
 
+/**
+ * Port of the `prism-dark` PrismJS theme.
+ * <https://github.com/PrismJS/prism/blob/867804573562ef0ac5acf470420b97e43488ccde/themes/prism-dark.css>
+ *
+ * Slightly tweaked a few colors so that they are a bit more readable on a
+ * terminal, some terminals have rendering issues when contrast is too low.
+ */
 export const theme: Theme = {
   _: chalk.white.bgHex('#231E19'),
   lineNumber: chalk.dim,

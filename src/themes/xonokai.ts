@@ -1,9 +1,10 @@
-// Port of xonokai PrismJS theme
-// https://github.com/PrismJS/prism-themes/blob/fe8d8fd7b80fb7d6bc0ed1a7b53009e5632701d7/themes/prism-xonokai.css
-
 import chalk from 'chalk'
 import type { Theme } from '../index.js'
 
+/**
+ * Port of xonokai PrismJS theme
+ * <https://github.com/PrismJS/prism-themes/blob/fe8d8fd7b80fb7d6bc0ed1a7b53009e5632701d7/themes/prism-xonokai.css>
+ */
 export const theme: Theme = {
   // default style
   _: chalk.hex('#76d9e6').bgHex('#2a2a2a'),
