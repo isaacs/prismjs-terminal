@@ -199,6 +199,8 @@ const compileTheme = (t: Theme): CompiledTheme => {
   for (const [s, tr] of t.entries()) {
     const selectors = parseSelector(s)
     for (const sel of selectors) {
+      if (!sel.length) throw new Error(`invalid selector: ${s}`)
+
       // sel is a stack, so `x y z` becomes `['x', 'y', 'z']`
       // add the stack with the rule to the last item,
       // so we add [['x', 'y'], tr] to 'z'

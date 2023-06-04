@@ -61,7 +61,14 @@
     "endOfLine": "lf"
   },
   "tap": {
+    "color": true,
     "coverage": false,
+    "test-env": [
+      "FORCE_COLOR=3"
+    ],
+    "test-arg": [
+      "--color=full"
+    ],
     "node-arg": [
       "--no-warnings",
       "--loader",
@@ -72,6 +79,8 @@
   "devDependencies": {
     "@types/node": "^20.1.5",
     "@types/prismjs": "^1.26.0",
+    "@types/tap": "^15.0.8",
+    "c8": "^7.14.0",
     "prettier": "^2.8.6",
     "tap": "16",
     "ts-node": "^10.9.1",

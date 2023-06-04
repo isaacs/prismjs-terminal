@@ -22,11 +22,20 @@ console.log(highlight(code, 'typescript'))
 Instead of CSS, themes are defined using an object with
 styling functions that take a string and return a string.
 
-The semantics are similar to CSS, where a nested property will be
-applied to nodes within that nesting stack, and have a higher
-priority the more tags that match.
+The `_` style rule applies to the block as a whole, and is used
+as the default style. This is where you'd usually port a PrismJS
+theme's `code[class*="language-"]` css rule.
 
-Aliases are not supported, styles have to be applied to the
+The semantics are similar to CSS, where a nested property will be
+applied to nodes within that nesting stack with a higher
+priority the more tags that match, and later rules taking
+precedence over earlier ones. It's _not_ a full CSS selector
+syntax though, so things like `.token.italic.bold` aren't
+supported. Just individual token class names, possibly nested.
+Also, chalk is not CSS, and a terminal is not a browser, so
+there are some differences and limitations of course.
+
+Aliases are also not supported, styles have to be applied to the
 actual parsed class names PrismJS provides.
 
 For example:
@@ -105,9 +114,14 @@ examples.
   straightforward to take a PrismJS CSS file and turn all the
   `color: #...` lines into `chalk.hex('#...')` calls.
 
+  Theme objects can be either a Map or object where the keys are
+  the selectors and the values are either a styling function or
+  an array of styling functions to be applied in order.
+
   - `debug` This just dumps the code wrapped in `<tag>...</tag>`
-    to see what the token names are.
-  - `github` Port of GHColors prismjs theme
-  - `moria` Inspired by Vim Moria color scheme
-  - `prismDark` Port of the `prism-dark` PrismJS theme
-  - `xonokai` Port of the `xonokai` PrismJS theme
+    to see what the token names are. Useful for tests and such.
+  - `plain` No styling, just the code as plain text.
+  - `github` Port of GHColors prismjs theme.
+  - `moria` Inspired by Vim Moria color scheme.
+  - `prismDark` Port of the `prism-dark` PrismJS theme.
+  - `xonokai` Port of the `xonokai` PrismJS theme.

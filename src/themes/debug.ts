@@ -153,3 +153,9 @@ template-string template-punctuation
     .split('\n')
     .map(name => [name, (s: string) => `<${name}>${s}</${name}>`])
 )
+
+// add another match just to have a dupe rule that becomes an array
+theme.set('a c d e f, f', [s => s])
+theme.set('a b c d e, a c d e f, f', [s => s])
+theme.set('a b c d e, a c d e f, f, g', [s => s])
+theme.set('a b c d e, a c d e f, f, g, h', s => s)
