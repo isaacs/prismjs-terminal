@@ -97,6 +97,6 @@
   "dependencies": {
     "chalk": "^5.2.0",
     "prismjs": "^1.29.0",
-    "string-length": "^5.0.1"
+    "string-length": "^6.0.0"
   }
 }
