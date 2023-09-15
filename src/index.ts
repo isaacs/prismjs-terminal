@@ -244,8 +244,12 @@ const detectLanguage = (filename: string): string => {
   const { ext } = parse(filename)
   switch (ext) {
     case '.ts':
+    case '.mts':
+    case '.cts':
       return 'typescript'
     case '.js':
+    case '.cjs':
+    case '.mjs':
       return 'javascript'
     case '.htm':
       return 'html'
