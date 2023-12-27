@@ -1,7 +1,7 @@
 {
   "name": "prismjs-terminal",
   "version": "1.2.3",
-  "description": "PrismaJS syntax highlighting for the terminal",
+  "description": "PrismJS syntax highlighting for the terminal",
   "keywords": [
     "terminal",
     "code",
@@ -93,7 +93,7 @@
   "funding": {
     "url": "https://github.com/sponsors/isaacs"
   },
-  "repository": "https://github.com/isaacs/prismajs-terminal",
+  "repository": "https://github.com/isaacs/prismjs-terminal",
   "dependencies": {
     "chalk": "^5.2.0",
     "prismjs": "^1.29.0",
