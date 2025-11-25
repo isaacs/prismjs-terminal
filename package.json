@@ -1,6 +1,6 @@
 {
   "name": "prismjs-terminal",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "PrismJS syntax highlighting for the terminal",
   "keywords": [
     "terminal",
