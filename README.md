@@ -72,8 +72,9 @@ console.log(highlight(code, 'typescript', { theme }))
 console.log(highlight(code, 'typescript', { theme: 'xonokai' }))
 ```
 
-See [the themes directory in this repo](./themes) for more
-examples.
+See [the themes directory in this
+repo](https://github.com/isaacs/prismjs-terminal/tree/main/src/themes)
+for more examples.
 
 ## API
 
