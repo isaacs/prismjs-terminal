@@ -1,0 +1,5 @@
+color: true
+test-arg:
+  - --color=full
+test-env:
+  - FORCE_COLOR=3

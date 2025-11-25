@@ -109,8 +109,8 @@ const applyStyles = (
   const rule = t.get(tag)
   if (!rule) return content
   const styles = getStyles(stack, rule)
-  for (let i = styles.length - 1; i > -1; i--) {
-    content = styles[i](content)
+  for (const style of styles) {
+    content = style(content)
   }
   return content
 }
@@ -194,7 +194,7 @@ const blockStyle = (
     if (len < maxWidth - tpad && len > max) max = len
   }
   for (let i = 0; i < lens.length; i++) {
-    const len = lens[i]
+    const len = Number(lens[i])
     const pad = max - len + padding
     const r = pad > 0 ? ' '.repeat(pad) : ''
     const l =
@@ -234,7 +234,7 @@ export const highlight = (
   }
   const c = compileTheme(t)
   return blockStyle(
-    stringify(Prism.tokenize(code, Prism.languages[language]), c),
+    stringify(Prism.tokenize(code, Prism.languages[language]!), c),
     c,
     { minWidth, maxWidth, padding, lineNumbers }
   )
@@ -322,7 +322,7 @@ const compileTheme = (t: Theme): CompiledTheme => {
       // sel is a stack, so `x y z` becomes `['x', 'y', 'z']`
       // add the stack with the rule to the last item,
       // so we add [['x', 'y'], tr] to 'z'
-      const last = sel[sel.length - 1]
+      const last = sel[sel.length - 1]!
       sel.pop()
       const cr = c.get(last) || []
       let pushed = false

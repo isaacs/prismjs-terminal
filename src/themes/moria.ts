@@ -5,10 +5,10 @@ import { Theme } from '../index.js'
  * Inspired by vim Moria theme
  * https://github.com/vim-scripts/moria
  *
- * It's not *quite* as faithful as I'd like (and I *would* like, since it's the
- * color scheme I personally use in Vim, and so most natural for me), because
- * Vim and PrismJS make slightly different choices about how they label program
- * tokens.
+ * It's not *quite* as faithful as I'd like (and I *would* like, since it's
+ * the color scheme I personally use in Vim, and so most natural for me),
+ * because Vim and PrismJS make slightly different choices about how they
+ * label program tokens.
  */
 export const theme: Theme = {
   _: chalk.ansi256(252).bgAnsi256(234),

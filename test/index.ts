@@ -21,7 +21,7 @@ const files = readdirSync(fixturesDir)
 const fixtures = files.map(f => resolve(fixturesDir, f))
 const contents = fixtures.map(f => [f, readFileSync(f, 'utf8')])
 
-for (const [f, code] of contents) {
+for (const [f, code] of contents as [string, string][]) {
   t.test(basename(f), t => {
     for (const [name, theme] of Object.entries(themes) as [
       keyof typeof themes,
@@ -45,7 +45,7 @@ for (const [f, code] of contents) {
 }
 
 t.test('js file', async t => {
-  const file = resolve(__dirname, '../dist/index.js')
+  const file = resolve(__dirname, '../dist/esm/index.js')
   const a = await highlightFile(file)
   t.matchSnapshot(a, 'async')
   const s = highlightFileSync(file)
